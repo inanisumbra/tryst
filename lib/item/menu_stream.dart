@@ -7,15 +7,11 @@ import 'package:polynectr/const/page_str_const.dart';
 
 const _MENU_STRINGS = [
   {'title': "Sign Up", 'items': SIGN_UP_PAGES},
-  {'title': "Walk Through", 'items': WALK_THROUGH_PAGES},
   {'title': "Navigation", 'items': NAVIGATION_PAGES},
   {'title': "Profile", 'items': PROFILE_PAGES},
   {'title': "Feed", 'items': FEED_PAGES},
   {'title': "Chat", 'items': CHAT_PAGES},
   {'title': "Shoppig", 'items': SHOPPING_PAGES},
-  {'title': "Statistics", 'items': STATISTIC_PAGES},
-  {'title': "Media", 'items': MEDIA_PAGES},
-  {'title': "Camera", 'items': CAMERA_PAGES},
 ];
 const _MENU_COLORS = [
   0xff050505,
@@ -31,27 +27,19 @@ const _MENU_COLORS = [
 ];
 const _MENU_ICONS = [
   Icons.airplanemode_active,
-  Icons.live_help,
   Icons.location_on,
   Icons.account_box,
   Icons.feedback,
   Icons.chat,
   Icons.shopping_cart,
-  Icons.all_inclusive,
-  Icons.play_circle_outline,
-  Icons.linked_camera,
 ];
 const _IMAGE_PATHS = [
   MainImagePath.image_sign_up,
-  MainImagePath.image_walk_through,
   MainImagePath.image_navigation,
   MainImagePath.image_profile,
   MainImagePath.image_feed,
   MainImagePath.image_chat,
   MainImagePath.image_shopping,
-  MainImagePath.image_statistic,
-  MainImagePath.image_media,
-  MainImagePath.image_camera,
 ];
 
 class MenuStreamController {

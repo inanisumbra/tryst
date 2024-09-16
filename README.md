@@ -1,2 +1,5 @@
 # polynectr
 
+```
+    flutter run 
+```

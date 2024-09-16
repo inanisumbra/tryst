@@ -123,13 +123,13 @@ class MyApp extends StatelessWidget {
         FEED_PAGES[2]: (context) => const FeedThreePage(),
         FEED_PAGES[3]: (context) => const FeedPageFour(),
         FEED_PAGES[4]: (context) => const FeedFivePage(),
-        FEED_PAGES[9]: (context) => const FeedPageTen(),
-        FEED_PAGES[10]: (context) => const FeedPageEleven(),
-        FEED_PAGES[11]: (context) => const FeedPageTwelve(),
-        FEED_PAGES[12]: (context) => const FeedPageThirteen(),
+        FEED_PAGES[5]: (context) => const FeedPageTen(),
+        FEED_PAGES[6]: (context) => const FeedPageEleven(),
+        FEED_PAGES[7]: (context) => const FeedPageTwelve(),
+        FEED_PAGES[8]: (context) => const FeedPageThirteen(),
 
-        SHOPPING_PAGES[17]: (context) => const ShopPageEighteen(),
-        SHOPPING_PAGES[18]: (context) => const ShopPageNineteen(),
+        SHOPPING_PAGES[0]: (context) => const ShopPageEighteen(),
+        SHOPPING_PAGES[1]: (context) => const ShopPageNineteen(),
 
         NAVIGATION_PAGES[0]: (context) => const NavigationOneCoordinator(),
         //FIXME there are other pages to jump with 'page_str_const.dart',there should be make by manager
