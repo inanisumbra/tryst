@@ -5,10 +5,10 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   isar_flutter_libs
-  sentry_flutter
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
+  sentry_flutter
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

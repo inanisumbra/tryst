@@ -19,12 +19,10 @@ class _DatePickerState extends State<DatePicker> {
         firstDate: DateTime(1900),
         lastDate: DateTime.now());
 
-    if (picker != null) {
-      setState(() {
-        date = picker;
-      });
+    setState(() {
+      date = picker;
+    });
     }
-  }
 
   @override
   Widget build(BuildContext context) {

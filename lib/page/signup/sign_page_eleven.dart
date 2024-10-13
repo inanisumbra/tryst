@@ -32,12 +32,10 @@ class _SignPageElevenState extends State<SignPageEleven> {
         initialDate: DateTime.now(),
         firstDate: DateTime(2016),
         lastDate: DateTime(2050));
-    if (picked != null) {
-      setState(
-        () => _currentDate = picked.toString(),
-      );
+    setState(
+      () => _currentDate = picked.toString(),
+    );
     }
-  }
 
   bool _male = true;
   bool _famele = false;

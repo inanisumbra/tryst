@@ -55,12 +55,10 @@ class _SignPageSevenState extends State<SignPageSeven> {
         initialDate: DateTime.now(),
         firstDate: DateTime(2016),
         lastDate: DateTime(2050));
-    if (picked != null) {
-      setState(
-        () => _currentDate = DateFormat('M/d/y').format(picked),
-      );
+    setState(
+      () => _currentDate = DateFormat('M/d/y').format(picked),
+    );
     }
-  }
 
   Future _selectPlace(BuildContext context) async {
     try {
