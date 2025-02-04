@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "472956815604",
+    "project_id": "tryst--development",
+    "storage_bucket": "tryst--development.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472956815604:android:eb4021669a65cd475636a1",
+        "android_client_info": {
+          "package_name": "network.tryst.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472956815604-4tvb26k1ur61gs5hnv12eae1o8hb0eqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARNXhejHMFyXefue-VVW7zxudTM8tYh8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472956815604-4tvb26k1ur61gs5hnv12eae1o8hb0eqb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "472956815604-cn9n9hu61bkiqvi9v3eq154q6cmhoiih.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tryst"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
