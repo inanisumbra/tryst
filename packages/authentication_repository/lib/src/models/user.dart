@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 /// {@template user}
 /// User model
@@ -12,6 +13,7 @@ class User extends Equatable {
     this.email,
     this.name,
     this.photo,
+    this.metadata
   });
 
   /// The current user's email address.
@@ -26,9 +28,11 @@ class User extends Equatable {
   /// Url for the current user's photo.
   final String? photo;
 
+  final UserMetadata? metadata;
+
   /// Empty user which represents an unauthenticated user.
   static const empty = User(id: '');
 
   @override
-  List<Object?> get props => [email, id, name, photo];
+  List<Object?> get props => [email, id, name, photo, metadata];
 }

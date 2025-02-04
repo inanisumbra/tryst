@@ -46,6 +46,7 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tryst/app/app.dart';
+import 'package:tryst/home/widgets/timeline.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -173,8 +174,10 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Container(
-      color: Colors.blueGrey,
+      color: Colors.black87,
       child: Center(
         /// adding GestureDetector
         child: GestureDetector(
@@ -182,7 +185,12 @@ class Page1 extends StatelessWidget {
           onTap: () {
             controller?.jumpTo(2);
           },
-          child: const Text('Page 1'),
+          child: Column(
+            mainAxisSize:MainAxisSize.max,
+            children: [
+              Timeline()
+            ]
+          ),
         ),
       ),
     );
