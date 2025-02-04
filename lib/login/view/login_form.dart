@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tryst/login/login.dart';
@@ -10,6 +11,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color _secondaryColor = Theme.of(context).colorScheme.secondary;
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state.status.isFailure) {
@@ -46,10 +48,38 @@ class LoginForm extends StatelessWidget {
                   _SignUpButton(),
                 ],
               ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  SizedBox(
+                      height: 1,
+                      width: 100,
+                      child: Container(
+                        color: _secondaryColor,
+                        height: 1,
+                      )),
+                  Text('OR', style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(
+                      width: 100,
+                      height: 1,
+                      child: Container(
+                        color: _secondaryColor,
+                        height: 1,
+                      ))
+                ],
+              ),
               const SizedBox(height: 12),
-              _GoogleLoginButton(),
-              const SizedBox(height: 12),
-              _AnonLoginButton()
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    _GoogleLoginButton(),
+                    const SizedBox(width: 12),
+                    _AnonLoginButton()
+                  ])
             ],
           ),
         ),
@@ -71,6 +101,7 @@ class _EmailInput extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'email',
+        suffixIcon: Icon(Icons.email_outlined),
         helperText: '',
         errorText: displayError != null ? 'invalid email' : null,
       ),
@@ -91,10 +122,10 @@ class _PasswordInput extends StatelessWidget {
           context.read<LoginCubit>().passwordChanged(password),
       obscureText: true,
       decoration: InputDecoration(
-        labelText: 'password',
-        helperText: '',
-        errorText: displayError != null ? 'invalid password' : null,
-      ),
+          labelText: 'password',
+          helperText: '',
+          errorText: displayError != null ? 'invalid password' : null,
+          suffixIcon: Icon(Icons.lock)),
     );
   }
 }
@@ -115,11 +146,10 @@ class _LoginButton extends StatelessWidget {
     return ElevatedButton(
       key: const Key('loginForm_continue_raisedButton'),
       style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           backgroundColor: const Color(0xFF0088FF),
-          elevation: 6),
+          elevation: 6,
+          padding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 32)),
       onPressed: isValid
           ? () => context.read<LoginCubit>().logInWithCredentials()
           : null,
@@ -132,19 +162,15 @@ class _GoogleLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ElevatedButton.icon(
+    return IconButton(
       key: const Key('loginForm_googleLogin_raisedButton'),
-      label: const Text(
-        'SIGN IN WITH GOOGLE',
-        style: TextStyle(color: Colors.white),
-      ),
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        backgroundColor: theme.colorScheme.secondary,
-      ),
-      icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
+      style: IconButton.styleFrom(
+          shape: CircleBorder(),
+          backgroundColor: theme.colorScheme.surface,
+          fixedSize: Size(40, 40),
+          iconSize: 24),
+      icon: Icon(FontAwesomeIcons.google,
+          size: 18, color: theme.colorScheme.secondary),
       onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
     );
   }
@@ -154,19 +180,15 @@ class _AnonLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ElevatedButton.icon(
+    return IconButton(
       key: const Key('loginForm_anonLogin_raisedButton'),
-      label: const Text(
-        'SIGN IN AS GUEST',
-        style: TextStyle(color: Colors.white),
-      ),
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        backgroundColor: theme.colorScheme.primary,
-      ),
-      icon: const Icon(FontAwesomeIcons.lock, color: Colors.white),
+      style: IconButton.styleFrom(
+          shape: CircleBorder(),
+          backgroundColor: theme.colorScheme.surface,
+          fixedSize: Size(40, 40),
+          iconSize: 24),
+      icon: Icon(FontAwesomeIcons.lockOpen,
+          color: theme.colorScheme.secondary, size: 18),
       onPressed: () => context.read<LoginCubit>().logInAsGuest(),
     );
   }
@@ -183,11 +205,9 @@ class _SignUpButton extends StatelessWidget {
         style: TextStyle(color: Colors.white),
       ),
       style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        backgroundColor: Colors.transparent,
-      ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          backgroundColor: Colors.transparent,
+          padding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 32)),
     );
   }
 }

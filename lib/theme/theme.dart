@@ -173,8 +173,8 @@ class MaterialTheme {
   static ColorScheme darkScheme() {
     return const ColorScheme(
       brightness: Brightness.dark,
-      primary: Color(0xFF2C2F3E),
-      surfaceTint: Color(0xffd4c0d9),
+      primary: Color(0xFFBBD0E8),
+      surfaceTint: Color.fromARGB(255, 192, 197, 217),
       onPrimary: Color(0xff392c3f),
       primaryContainer: Color(0xff120718),
       onPrimaryContainer: Color(0xff85748b),
@@ -190,9 +190,9 @@ class MaterialTheme {
       onError: Color(0xff690005),
       errorContainer: Color(0xff93000a),
       onErrorContainer: Color(0xffffdad6),
-      surface: Color(0xff141315),
-      onSurface: Color(0xffe6e1e3),
-      onSurfaceVariant: Color(0xffcdc4cb),
+      surface: Color(0xFF2C2F3E),
+      onSurface: Color.fromARGB(255, 225, 227, 230),
+      onSurfaceVariant: Color.fromARGB(255, 196, 200, 205),
       outline: Color(0xff968e95),
       outlineVariant: Color(0xff4a454b),
       shadow: Color(0xff000000),
@@ -211,13 +211,13 @@ class MaterialTheme {
       onTertiaryFixed: Color(0xff00105c),
       tertiaryFixedDim: Color(0xffbac3ff),
       onTertiaryFixedVariant: Color(0xff293ca0),
-      surfaceDim: Color(0xff141315),
+      surfaceDim: Color(0xff131314),
       surfaceBright: Color(0xff3a393a),
-      surfaceContainerLowest: Color(0xff0f0e0f),
-      surfaceContainerLow: Color(0xff1c1b1d),
-      surfaceContainer: Color(0xff201f21),
-      surfaceContainerHigh: Color(0xff2b292b),
-      surfaceContainerHighest: Color(0xff363436),
+      surfaceContainerLowest: Color(0xff0e0e0f),
+      surfaceContainerLow: Color(0xff1c1b1c),
+      surfaceContainer: Color(0xff201f20),
+      surfaceContainerHigh: Color(0xff2a2a2b),
+      surfaceContainerHighest: Color(0xff353435),
     );
   }
 
