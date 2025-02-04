@@ -49,7 +49,7 @@ import 'package:tryst/app/app.dart';
 import 'package:tryst/home/widgets/timeline.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   static Page<void> page() => const MaterialPage<void>(child: HomePage());
 
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
       const Page2(),
       const Page3(),
     ];
-    final ColorScheme _colorScheme = Theme.of(context).colorScheme;
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
           ? AnimatedNotchBottomBar(
               /// Provide NotchBottomBarController
               notchBottomBarController: _controller,
-              color: _colorScheme.primary,
+              color: colorScheme.primary,
               textOverflow: TextOverflow.visible,
               maxLine: 1,
               shadowElevation: 5,
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
               //   colors: [Colors.red, Colors.green, Colors.orange],
               //   tileMode: TileMode.mirror,
               // ).createShader(Rect.fromCircle(center: Offset.zero, radius: 8.0)),
-              notchColor: _colorScheme.primary,
+              notchColor: colorScheme.primary,
 
               /// restart app if you change removeMargins
               removeMargins: false,
@@ -136,23 +136,23 @@ class _HomePageState extends State<HomePage> {
               bottomBarItems: [
                 BottomBarItem(
                   inActiveItem: Icon(Icons.home_outlined,
-                      color: _colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary, size: 24),
                   activeItem: Icon(Icons.home_outlined,
-                      color: _colorScheme.secondary, size: 24),
+                      color: colorScheme.secondary, size: 24),
                   itemLabel: 'Page 1',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(Icons.add_box_outlined,
-                      color: _colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary, size: 24),
                   activeItem: Icon(Icons.add_box_outlined,
-                      color: _colorScheme.secondary, size: 24),
+                      color: colorScheme.secondary, size: 24),
                   itemLabel: 'Page 2',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(Icons.manage_accounts_outlined,
-                      color: _colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary, size: 24),
                   activeItem: Icon(Icons.manage_accounts_outlined,
-                      color: _colorScheme.secondary, size: 24),
+                      color: colorScheme.secondary, size: 24),
                   itemLabel: 'Page 3',
                 ),
               ],
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
 class Page1 extends StatelessWidget {
   final NotchBottomBarController? controller;
 
-  const Page1({Key? key, this.controller}) : super(key: key);
+  const Page1({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,7 @@ class Page1 extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+  const Page2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -208,7 +208,7 @@ class Page2 extends StatelessWidget {
 }
 
 class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
+  const Page3({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tryst/login/login.dart';
@@ -11,7 +10,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color _secondaryColor = Theme.of(context).colorScheme.secondary;
+    final Color secondaryColor = Theme.of(context).colorScheme.secondary;
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state.status.isFailure) {
@@ -58,7 +57,7 @@ class LoginForm extends StatelessWidget {
                       height: 1,
                       width: 100,
                       child: Container(
-                        color: _secondaryColor,
+                        color: secondaryColor,
                         height: 1,
                       )),
                   Text('OR', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -66,7 +65,7 @@ class LoginForm extends StatelessWidget {
                       width: 100,
                       height: 1,
                       child: Container(
-                        color: _secondaryColor,
+                        color: secondaryColor,
                         height: 1,
                       ))
                 ],
@@ -200,14 +199,14 @@ class _SignUpButton extends StatelessWidget {
     return OutlinedButton(
       key: const Key('loginForm_createAccount_flatButton'),
       onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
-      child: Text(
-        'CREATE ACCOUNT',
-        style: TextStyle(color: Colors.white),
-      ),
       style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           backgroundColor: Colors.transparent,
           padding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 32)),
+      child: Text(
+        'CREATE ACCOUNT',
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }
