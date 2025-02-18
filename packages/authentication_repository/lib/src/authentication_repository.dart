@@ -241,14 +241,11 @@ class AuthenticationRepository {
   Future<void> logInAsGuest() async {
     try {
       await _firebaseAuth.signInAnonymously();
-      print("Signed in with temporary account.");
     } on firebase_auth.FirebaseAuthException catch (e) {
       switch (e.code) {
         case "operation-not-allowed":
-          print("Anonymous auth hasn't been enabled for this project.");
           break;
         default:
-          print("Unknown error.");
       }
     }
   }

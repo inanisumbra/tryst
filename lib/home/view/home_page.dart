@@ -8,6 +8,8 @@
 
 //   static Page<void> page() => const MaterialPage<void>(child: HomePage());
 
+// ignore_for_file: unused_field
+
 //   @override
 //   Widget build(BuildContext context) {
 //     final textTheme = Theme.of(context).textTheme;
@@ -45,8 +47,10 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tryst/add_tryst/view/add_tryst_view.dart';
 import 'package:tryst/app/app.dart';
-import 'package:tryst/home/widgets/timeline.dart';
+import 'package:tryst/dashboard/view/dashboard_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,7 +69,13 @@ class _HomePageState extends State<HomePage> {
   final NotchBottomBarController _controller =
       NotchBottomBarController(index: 0);
 
+  void switchToPage(index) {
+    _pageController.animateToPage(index, duration: Duration(seconds: 1), curve: Curves.decelerate);
+    _controller.jumpTo(index);
+  }
+
   int maxCount = 5;
+  final _today = DateTime.now();
 
   @override
   void dispose() {
@@ -78,16 +88,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     /// widget list
     final List<Widget> bottomBarPages = [
-      Page1(
-        controller: (_controller),
-      ),
-      const Page2(),
+      DashboardPage(switchToPage: switchToPage),
+      const AddTrystView(),
       const Page3(),
     ];
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Home'),
+        backgroundColor: Colors.transparent,
+        title: Text('Welcome back ${context.select((AppBloc bloc) => bloc.state.user.name ?? 'Generic Bob')}...', style: GoogleFonts.megrim(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: colorScheme.tertiary.withAlpha(150)
+        )),
         actions: <Widget>[
           IconButton(
             key: const Key('homePage_logout_iconButton'),
@@ -109,10 +123,10 @@ class _HomePageState extends State<HomePage> {
           ? AnimatedNotchBottomBar(
               /// Provide NotchBottomBarController
               notchBottomBarController: _controller,
-              color: colorScheme.primary,
+              color: colorScheme.surface.withAlpha(200),
               textOverflow: TextOverflow.visible,
               maxLine: 1,
-              shadowElevation: 5,
+              shadowElevation: 3,
               kBottomRadius: 28.0,
               durationInMilliSeconds: 600,
 
@@ -122,12 +136,12 @@ class _HomePageState extends State<HomePage> {
               //   colors: [Colors.red, Colors.green, Colors.orange],
               //   tileMode: TileMode.mirror,
               // ).createShader(Rect.fromCircle(center: Offset.zero, radius: 8.0)),
-              notchColor: colorScheme.primary,
+              notchColor: colorScheme.surface.withAlpha(200),
 
               /// restart app if you change removeMargins
               removeMargins: false,
-              bottomBarWidth: 500,
-              bottomBarHeight: 48,
+              bottomBarWidth: MediaQuery.of(context).size.width,
+              bottomBarHeight: 42,
               showShadow: false,
 
               itemLabelStyle: const TextStyle(fontSize: 10),
@@ -136,28 +150,28 @@ class _HomePageState extends State<HomePage> {
               bottomBarItems: [
                 BottomBarItem(
                   inActiveItem: Icon(Icons.home_outlined,
-                      color: colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary.withAlpha(200), size: 24),
                   activeItem: Icon(Icons.home_outlined,
                       color: colorScheme.secondary, size: 24),
-                  itemLabel: 'Page 1',
+                  itemLabel: 'Dashboard',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(Icons.add_box_outlined,
-                      color: colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary.withAlpha(200), size: 24),
                   activeItem: Icon(Icons.add_box_outlined,
                       color: colorScheme.secondary, size: 24),
-                  itemLabel: 'Page 2',
+                  itemLabel: 'Tryst',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(Icons.manage_accounts_outlined,
-                      color: colorScheme.tertiary, size: 24),
+                      color: colorScheme.tertiary.withAlpha(200), size: 24),
                   activeItem: Icon(Icons.manage_accounts_outlined,
                       color: colorScheme.secondary, size: 24),
                   itemLabel: 'Page 3',
                 ),
               ],
               onTap: (index) {
-                _pageController.jumpToPage(index);
+                switchToPage(index);
               },
               kIconSize: 24.0,
             )
@@ -166,46 +180,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-/// add controller to check weather index through change or not. in page 1
-class Page1 extends StatelessWidget {
-  final NotchBottomBarController? controller;
-
-  const Page1({super.key, this.controller});
-
-  @override
-  Widget build(BuildContext context) {
-    
-
-    return Container(
-      color: Colors.black87,
-      child: Center(
-        /// adding GestureDetector
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onTap: () {
-            controller?.jumpTo(2);
-          },
-          child: Column(
-            mainAxisSize:MainAxisSize.max,
-            children: [
-              Timeline()
-            ]
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page2 extends StatelessWidget {
-  const Page2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.blueGrey, child: const Center(child: Text('Page 2')));
-  }
-}
 
 class Page3 extends StatelessWidget {
   const Page3({super.key});
