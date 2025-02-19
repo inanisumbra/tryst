@@ -7,7 +7,7 @@ const moment = require("moment");
 
 function urlStringBuilder() {
     const end = moment().format("YYYY-MM-DD");
-    const start = end.subtract(7, 'days').format("YYYY-MM-DD");
+    const start = moment(end).subtract(7, 'days').format("YYYY-MM-DD");
     return {
       url: `https://wakatime.com/@44c6aa7b-8fe0-4a2d-984b-2196f658cef9/projects/xpgicchoiw?start=${start}&end=${end}`,
       start,
