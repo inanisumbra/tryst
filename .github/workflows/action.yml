@@ -19,8 +19,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: useLocal
-        uses: ./.github/workflows
       - name: Run Screenshot 
         run : node action.js
 
