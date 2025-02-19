@@ -6,13 +6,13 @@ const path = require("path");
 const moment = require("moment");
 
 function urlStringBuilder() {
-    const end = moment().format("YYYY-MM-DD");
-    const start = moment(end).subtract(7, 'days').format("YYYY-MM-DD");
-    return {
-      url: `https://wakatime.com/@44c6aa7b-8fe0-4a2d-984b-2196f658cef9/projects/xpgicchoiw?start=${start}&end=${end}`,
-      start,
-      end
-    }
+  const end = moment().format("YYYY-MM-DD");
+  const start = moment(end).subtract(7, 'days').format("YYYY-MM-DD");
+  return {
+    url: `https://wakatime.com/@44c6aa7b-8fe0-4a2d-984b-2196f658cef9/projects/xpgicchoiw?start=${start}&end=${end}`,
+    start,
+    end
+  }
 }
 
 function getChromePath() {
@@ -44,11 +44,11 @@ function getChromePath() {
 
 (async () => {
   try {
-    await io.mkdirP(`${process.env.GITHUB_WORKSPACE}/screenshots/`);
+    await io.mkdirP(`./screenshots/`);
 
-  
-    const {url, start, end} = urlStringBuilder();
-  
+
+    const { url, start, end } = urlStringBuilder();
+
 
     const timestamp = new Date().getTime();
     const width = 940;
@@ -63,14 +63,11 @@ function getChromePath() {
     await page.goto(url, {
       waitUntil: "networkidle2",
     });
-    await page.waitFor(3000);
     await page.screenshot({
       fullPage,
-      path: `${process.env.GITHUB_WORKSPACE}/screenshots/${screenshotName}.png`,
-    });
+      path: `./screenshots/${screenshotName}.png`,
+    })
     await browser.close();
-
-    core.exportVariable("TIMESTAMP", timestamp);
   } catch (error) {
     core.setFailed(`Failed to run action. ${error}`);
     process.exit(1);
