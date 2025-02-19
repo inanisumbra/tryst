@@ -17,5 +17,5 @@ jobs:
         run: npm install
       
       - name: Run Screenshot
-        run: npm run start
+        run: node action.js
 
