@@ -3,6 +3,17 @@ const puppeteer = require("puppeteer-core");
 const io = require("@actions/io");
 const os = require("os");
 const path = require("path");
+const moment = require("moment");
+
+function urlStringBuilder() {
+    const end = moment().format("YYYY-MM-DD");
+    const start = end.subtract(7, 'days').format("YYYY-MM-DD");
+    return {
+      url: `https://wakatime.com/@44c6aa7b-8fe0-4a2d-984b-2196f658cef9/projects/xpgicchoiw?start=${start}&end=${end}`,
+      start,
+      end
+    }
+}
 
 function getChromePath() {
   let browserPath;
@@ -35,16 +46,14 @@ function getChromePath() {
   try {
     await io.mkdirP(`${process.env.GITHUB_WORKSPACE}/screenshots/`);
 
-    const url = core.getInput("url");
+  
+    const {url, start, end} = urlStringBuilder();
+  
 
     const timestamp = new Date().getTime();
-    const width = parseInt(core.getInput("width"));
-    const height = parseInt(core.getInput("height"));
-    const fullPage = core.getInput("fullPage") === "true";
-    const screenshotName =
-      core.getInput("screenshotName") !== "false"
-        ? core.getInput("screenshotName")
-        : `screenshot-${timestamp}`;
+    const width = 940;
+    const height = 5000;
+    const screenshotName = `WakaTime_${start}-${end}`;
 
     const browser = await puppeteer.launch({
       executablePath: getChromePath(),
