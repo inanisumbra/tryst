@@ -45,12 +45,7 @@ function getChromePath() {
 (async () => {
   try {
     await io.mkdirP(`./screenshots/`);
-
-
     const { url, start, end } = urlStringBuilder();
-
-
-    const timestamp = new Date().getTime();
     const width = 940;
     const height = 5000;
     const screenshotName = `WakaTime_${start}-${end}`;
@@ -64,7 +59,6 @@ function getChromePath() {
       waitUntil: "networkidle2",
     });
     await page.screenshot({
-      fullPage,
       path: `./screenshots/${screenshotName}.png`,
     })
     await browser.close();
