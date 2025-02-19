@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const puppeteer = require("puppeteer");https://github.com/Polynectr/tryst/blob/master/workflows/index.js
+const puppeteer = require("puppeteer");
 const io = require("@actions/io");
 const os = require("os");
 const path = require("path");
