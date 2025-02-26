@@ -50,7 +50,7 @@ final class Participant extends Equatable
 }
 final class UserInformation extends Equatable
 {
-    UserInformation({this.sexualActivity, this.participationData});
+    const UserInformation({this.sexualActivity, this.participationData});
     final List<TrystData>? sexualActivity;
     final Participant? participationData;
     @override
